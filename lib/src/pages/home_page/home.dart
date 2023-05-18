@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../map/mapa.dart';
+
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
 
@@ -9,7 +11,9 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
 
-  List _listaViagens = [
+
+
+  final List _listaViagens = [
     "Cristo redentor",
     "Grande Muralha da China",
     "Taj Mahal",
@@ -25,13 +29,15 @@ class _HomeState extends State<Home> {
 
   }
 
+  //usada no floatingActionButton
   _adicionarLocal(){
-
+    Navigator.push(context, MaterialPageRoute(builder: (_) => Mapa()));
   }
 
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
         title: const Text("Mapas e Geolocalização"),
@@ -39,11 +45,11 @@ class _HomeState extends State<Home> {
       ),
 
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add),
         backgroundColor: Colors.blue,
         onPressed: (){
           _adicionarLocal();
         },
+        child: const Icon(Icons.add),
       ),
 
       body: Column(
@@ -70,7 +76,7 @@ class _HomeState extends State<Home> {
                             onTap: (){
                               _excluirViagem();
                             },
-                            child: Padding(
+                            child: const Padding(
                               padding: EdgeInsets.all(8),
                               child: Icon(
                                 Icons.remove_circle,
